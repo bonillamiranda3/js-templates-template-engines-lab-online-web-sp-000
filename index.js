@@ -6,6 +6,7 @@ function createPost(){
  let postTemplateFn = _.template(postTemplate);
  let postTemplateHTML = postTemplateFn({ postAuthor: postAuthor, postTitle: postTitle, postBody: postBody })
 };
+
 function postComment() {
 };
 
