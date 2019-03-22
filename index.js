@@ -16,4 +16,4 @@ let pageTemplate = document.getElementById('page-template').innerHTML;
  let main = document.querySelector('main');
  let pageTemplateHTML = pageTemplateFn({ newPost: post });
  main.innerHTML += pageTemplateHTML;
-}; 
+};
