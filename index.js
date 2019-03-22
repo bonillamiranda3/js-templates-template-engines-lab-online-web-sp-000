@@ -1,19 +1,20 @@
 function createPost() {
-  let postAuthor = document.getElementById('postAuthor').value;
-  let postTitle = document.getElementById('postTitle').value;
-  let postBody = document.getElementById('postBody').value;
-  let postTemplate = document.getElementById('post-template').innerHTML;
-  let postTemplateFn = _.template(postTemplate);
-  let postTemplateHTML = postTemplateFn({ postAuthor: postAuthor, postTitle: postTitle, postBody: postBody })
-};
-
+  let pageTemplate = _.template(document.getElementById("page-template").innerHTML);
+  let comments = _.template(document.getElementById("comments-template").innerHTML);
+  let postTemplate = _.template(document.getElementById("post-template").innerHTML);
+  let main = document.getElementsByTagName('main')[0];
+  main.innerHTML += pageTemplate;
+  let title = document.getElementById('postTitle').value;
+  let author = document.getElementById('postAuthor').value;
+  let content = document.getElementById('postContent').value;
+  let postSection = document.getElementById('post');
+  postSection.innerHTML = postTemplate( {'title': title, 'body': content, 'author': author} );
+  postSection.innerHTML += comments;
+}
 function postComment() {
-};
-
-function createPage(post) {
-  let pageTemplate = document.getElementById('page-template').innerHTML;
-  let pageTemplateFn = _.template(pageTemplate);
-  let main = document.querySelector('main');
-  let pageTemplateHTML = pageTemplateFn({ newPost: post });
-  main.innerHTML += pageTemplateHTML;
-}; 
+  let commentTemplate = _.template(document.getElementById("comment-template").innerHTML);
+  let commenter = document.getElementById('commenterName').value;
+  let comments = document.getElementById("comments");
+  let comment = document.getElementById('commentText').value;
+  comments.innerHTML += commentTemplate({ 'commenter': commenter, 'comment': comment });
+}
